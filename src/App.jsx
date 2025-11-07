@@ -26,10 +26,11 @@ function Home(){
         shifts, and environmental interference distort electrocardiogram 
         (ECG) recordings, making clean data difficult to obtain in both 
         clinical and research settings. For scientists and engineers 
-        building AI models, this noise becomes a silent barrier—models 
-        trained on corrupted signals struggle to detect real cardiac 
+        building AI models, this noise becomes a silent barrier. Models 
+        that are trained on corrupted signals struggle to detect real cardiac 
         abnormalities and fail when applied in real-world conditions.
-
+      </p>
+      <p className="explanation">
         Restoring the Heartbeat of Data tackles this challenge through 
         artificial intelligence. I am developing a physiologically 
         conditioned diffusion model that denoises ECG signals by 
@@ -38,7 +39,8 @@ function Home(){
         simply removing unwanted static, this model “listens through 
         the noise,” learning how a healthy heartbeat should look and 
         sound across multiple biological signals.
-
+      </p>
+      <p className="explanation">
         This project advocates for a future where AI-driven medicine 
         begins not with vast data collections but with trustworthy, 
         biologically grounded data. Clean ECG signals mean better 
@@ -104,7 +106,8 @@ function Research(){
         multimodal. Heart rate, RR intervals, and PPG waveforms 
         all express the same underlying rhythm from different 
         physiological perspectives.
-
+      </p>
+      <p className="explanation">
         My proposed model builds upon this understanding. It uses a 
         diffusion process, a recent innovation in generative AI, 
         that gradually reconstructs clean signals from noisy inputs. 
@@ -114,7 +117,8 @@ function Research(){
         preserve the subtle but diagnostic features of the ECG, such as 
         QRS morphology and RR interval stability, that often vanish 
         under traditional filtering.
-
+      </p>
+      <p className="explanation">
         The model is trained on synchronized datasets derived from the 
         QT Database (QTDB), containing ECG recordings annotated with 
         beat-level information. Performance is evaluated using 
@@ -124,7 +128,7 @@ function Research(){
         Through this process, the research demonstrates how physiological 
         context can turn AI from a statistical tool into a biologically 
         informed system capable of clinical reliability.
-        </p>
+      </p>
 
       <div className="diagram">
         <img src="/diagram.png" alt="Model diagram" className="diagram-img" />
@@ -156,7 +160,8 @@ function Impact(){
         irregularities, or misinterpreted patterns that affect 
         patient treatment. These errors ripple outward, undermining 
         trust in AI and compromising the promise of digital healthcare.
-
+      </p>
+      <p className="explanation">
         By integrating physiological context into the denoising process, 
         this project aims to establish a new standard for biomedical data 
         preprocessing. A physiologically conditioned model does more 
@@ -164,7 +169,8 @@ function Impact(){
         It enables AI systems to recognize true cardiac dynamics, 
         helping clinicians make faster, more accurate decisions based on 
         data that genuinely reflects the patient’s heart.
-
+      </p>
+      <p className="explanation">
         Beyond cardiology, the same principles can extend to other 
         physiological signals such as EEG or PPG, improving multimodal 
         healthcare systems and wearable technologies. Clean data leads 
@@ -174,7 +180,7 @@ function Impact(){
         human wellbeing.
 
         Below are some examples of real-world impact from improved ECG denoising.
-        </p>
+      </p>
       <div className="cases">
         <article className="case">
           <h4>Case: Missed Arrhythmia</h4>
@@ -217,12 +223,14 @@ function GetInvolved(){
         or clinical cardiology, your expertise can help strengthen 
         the foundation for cleaner, more interpretable physiological 
         datasets.
-
+       </p>
+       <p className="explanation"> 
         The project’s open-source repository includes scripts for data 
         preprocessing, model training, and visualization. Contributors 
         can test the model with their own datasets, explore the architecture, and 
         propose extensions to other biosignals.
-
+      </p>
+      <p className="explanation">
         Clinicians can also participate by providing feedback on 
         denoised ECG outputs and sharing insights into real-world 
         signal challenges. Together, we can move toward a healthcare 
@@ -230,7 +238,7 @@ function GetInvolved(){
         human physiology. Clean data is not just a research goal, it’s a 
         collective responsibility, and your collaboration can help bring 
         that vision to life.
-        </p>
+      </p>
 
       <div className="ctas">
         <a className="cta" href="mailto:bk25a@fsu.edu">Contact the Team</a>
@@ -266,14 +274,16 @@ function About(){
         clean physiological data is difficult to obtain, 
         which are easily contaminated by patient movement 
         or sensor error.
-
+      </p>
+      <p className="explanation">
         My goal is to bridge this gap between technology and biology. 
         As a student who is interested in biomedical signal processing, 
         I have seen how even advanced algorithms fail when trained 
         on imperfect data. This project represents both a technical 
         and ethical response, a commitment to developing AI systems 
         that learn from data as true to life as possible.
-
+      </p>
+      <p className="explanation">
         By combining insights from physiology, machine learning, and 
         medical engineering, I aim to create a framework that can be 
         adopted by researchers, clinicians, and wearable device 
