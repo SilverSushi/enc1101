@@ -43,7 +43,7 @@ function Home(){
         begins not with vast data collections but with trustworthy, 
         biologically grounded data. Clean ECG signals mean better 
         research, more accurate diagnoses, and stronger confidence in 
-        medical technology — one restored heartbeat at a time.
+        medical technology, one restored heartbeat at a time.
       </p>
     </div>
   )
@@ -95,8 +95,8 @@ function Research(){
     <div className="research">
       <h2>Reconstructing the Signal</h2>
       <p className="explanation">
-        Modern denoising algorithms face a tradeoff: remove too 
-        little noise and the ECG remains unreadable; remove too 
+        Modern denoising algorithms face a tradeoff. Remove too 
+        little noise and the ECG remains unreadable, remove too 
         much and essential cardiac details disappear. Traditional 
         approaches, such as adaptive filtering and wavelet 
         thresholding, treat the ECG as an isolated waveform. 
@@ -111,8 +111,8 @@ function Research(){
         By conditioning the diffusion model on HR, RR, and PPG data, 
         it learns to distinguish between noise and meaningful 
         variability. Each signal serves as a guide, helping the model 
-        preserve the subtle but diagnostic features of the ECG—such as 
-        QRS morphology and RR interval stability—that often vanish 
+        preserve the subtle but diagnostic features of the ECG, such as 
+        QRS morphology and RR interval stability, that often vanish 
         under traditional filtering.
 
         The model is trained on synchronized datasets derived from the 
@@ -152,7 +152,7 @@ function Impact(){
         Clean ECG data is more than an academic goal. It’s a clinical 
         necessity. When machine learning models are trained on noisy 
         signals, even minor distortions can lead to inaccurate 
-        predictions—false arrhythmia alerts, overlooked cardiac 
+        predictions such as false arrhythmia alerts, overlooked cardiac 
         irregularities, or misinterpreted patterns that affect 
         patient treatment. These errors ripple outward, undermining 
         trust in AI and compromising the promise of digital healthcare.
@@ -160,7 +160,7 @@ function Impact(){
         By integrating physiological context into the denoising process, 
         this project aims to establish a new standard for biomedical data 
         preprocessing. A physiologically conditioned model does more 
-        than remove noise; it restores the meaning of the signal. 
+        than remove noise. It restores the meaning of the signal. 
         It enables AI systems to recognize true cardiac dynamics, 
         helping clinicians make faster, more accurate decisions based on 
         data that genuinely reflects the patient’s heart.
@@ -172,6 +172,8 @@ function Impact(){
         people and the algorithms designed to help them. In short, this 
         project matters because it aligns technological progress with 
         human wellbeing.
+
+        Below are some examples of real-world impact from improved ECG denoising.
         </p>
       <div className="cases">
         <article className="case">
@@ -217,9 +219,8 @@ function GetInvolved(){
         datasets.
 
         The project’s open-source repository includes scripts for data 
-        preprocessing, model training, and visualization—ensuring 
-        transparency and reproducibility. Contributors can test the 
-        model with their own datasets, explore the architecture, and 
+        preprocessing, model training, and visualization. Contributors 
+        can test the model with their own datasets, explore the architecture, and 
         propose extensions to other biosignals.
 
         Clinicians can also participate by providing feedback on 
@@ -262,8 +263,8 @@ function About(){
         human heart if the data it learns from is distorted? As 
         AI models play a growing role in healthcare, their 
         reliability increasingly depends on data quality. Yet 
-        clean physiological data is difficult to obtain—especially 
-        ECGs, which are easily contaminated by patient movement 
+        clean physiological data is difficult to obtain, 
+        which are easily contaminated by patient movement 
         or sensor error.
 
         My goal is to bridge this gap between technology and biology. 
