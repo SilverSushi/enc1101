@@ -41,7 +41,10 @@ textarea{flex:1;min-height:56px;max-height:160px;padding:10px;border-radius:8px;
 .comparison figure{background:var(--card);padding:8px;border-radius:8px;border:1px solid rgba(15,23,36,0.04);display:flex;flex-direction:column;align-items:center}
 .comparison img{width:420px;max-width:46vw;height:auto;border-radius:6px;background:transparent}
 .comparison figcaption{font-size:0.85rem;color:var(--muted);margin-top:8px}
-.explanation{color:var(--muted);line-height:1.5;margin:0 24px}
+.explanation{color:var(--muted);line-height:1.6;margin:0 24px;text-indent:1.2em}
+
+/* Ensure other common content paragraphs also get a gentle indent (keeps headings unaffected) */
+.research .explanation, .impact .explanation, .about .explanation, .get-involved .explanation, .model-demo .explanation{text-indent:1.2em}
 
 /* Navigation */
 .nav{display:flex;gap:8px}

@@ -21,31 +21,22 @@ function Home(){
       </div>
 
       <p className="explanation">
-        Every heartbeat carries vital information about the body’s rhythm, 
-        yet much of that information is lost to noise. Motion, electrode 
-        shifts, and environmental interference distort electrocardiogram 
-        (ECG) recordings, making clean data difficult to obtain in both 
-        clinical and research settings. For scientists and engineers 
-        building AI models, this noise becomes a silent barrier. Models 
-        that are trained on corrupted signals struggle to detect real cardiac 
-        abnormalities and fail when applied in real-world conditions.
+        The heartbeat is one of the most recognizable signatures of human life. A single electrocardiogram (ECG) waveform captures the electrical rhythm that keeps blood flowing throughout the body, translating complex cardiac dynamics into a readable signal. Clinicians rely on tiny variations in the ECG, subtle changes in slope, timing, or amplitude, to detect arrhythmias, diagnose heart conditions, and understand the body’s overall physiological state. But despite its clinical importance, the ECG is also one of the most fragile signals in medicine.
       </p>
       <p className="explanation">
-        Restoring the Heartbeat of Data tackles this challenge through 
-        artificial intelligence. I am developing a physiologically 
-        conditioned diffusion model that denoises ECG signals by 
-        incorporating additional physiological cues such as heart rate 
-        (HR), RR intervals, and photoplethysmography (PPG). Rather than 
-        simply removing unwanted static, this model “listens through 
-        the noise,” learning how a healthy heartbeat should look and 
-        sound across multiple biological signals.
+        In the real world, clean ECG data is incredibly difficult to obtain. A patient shifts slightly in bed, and the electrodes lose contact for a split second. A wearable device slips during a workout. A cable brushes against clothing or receives interference from nearby electronics. Even perspiration can introduce drift or change the skin–electrode interface. Each of these small events leaves a trace on the ECG, transforming clear cardiac patterns into distorted shapes. P-waves disappear into noise, QRS complexes become irregular, and entire segments of the signal can collapse into chaotic fluctuations.
       </p>
       <p className="explanation">
-        This project advocates for a future where AI-driven medicine 
-        begins not with vast data collections but with trustworthy, 
-        biologically grounded data. Clean ECG signals mean better 
-        research, more accurate diagnoses, and stronger confidence in 
-        medical technology, one restored heartbeat at a time.
+        For clinicians interpreting ECGs manually, noise is frustrating but manageable. They can often recognize and mentally filter out artifacts. But for machine learning models, noise introduces profound confusion. AI models trained on inconsistent or distorted data tend to mislearn patterns, mistaking motion artifacts for arrhythmias or treating baseline wander as genuine ST-segment changes. When these flawed models are deployed in high-stakes environments, such as emergency departments, telehealth platforms, or wearable cardiac monitors, the consequences extend far beyond technical inconvenience. Misclassifications can influence medical decisions, create false alarms, or mask dangerous conditions.
+      </p>
+      <p className="explanation">
+        As research increasingly shifts toward AI-driven cardiology, the need for clean, physiologically accurate ECG data has never been more urgent. Large datasets are foundational for training diagnostic models, yet many existing collections contain significant noise, especially those sourced from real-world, ambulatory, or consumer-grade devices. The more diverse and widespread ECG monitoring becomes, the more challenging it is to maintain high data quality.
+      </p>
+      <p className="explanation">
+        Restoring the Heartbeat of Data responds directly to this growing crisis. Instead of treating noise as an unavoidable limitation, this project explores how artificial intelligence can actively restore clarity. By developing a physiologically conditioned diffusion model, I aim to denoise ECG signals using information from other synchronized biological signals: heart rate (HR), RR intervals, and photoplethysmography (PPG). These additional cues help guide the model, ensuring that the restored ECG reflects true cardiac activity rather than statistical approximations.
+      </p>
+      <p className="explanation">
+        The goal is simple but essential: make ECG data as trustworthy as the heartbeat it represents.
       </p>
     </div>
   )
@@ -97,41 +88,37 @@ function Research(){
     <div className="research">
       <h2>Reconstructing the Signal</h2>
       <p className="explanation">
-        Modern denoising algorithms face a tradeoff. Remove too 
-        little noise and the ECG remains unreadable, remove too 
-        much and essential cardiac details disappear. Traditional 
-        approaches, such as adaptive filtering and wavelet 
-        thresholding, treat the ECG as an isolated waveform. 
-        However, the human cardiovascular system is inherently 
-        multimodal. Heart rate, RR intervals, and PPG waveforms 
-        all express the same underlying rhythm from different 
-        physiological perspectives.
+        Effective ECG denoising is not just a mathematical problem, it’s a physiological one. Every cardiac signal is shaped by the coordinated interplay between electrical conduction, mechanical contraction, and circulatory dynamics. Traditional denoising methods often overlook this complexity. Filtering techniques assume that noise has a distinct, separable frequency profile, but real artifacts overlap directly with clinically significant features. A baseline drift can mimic ST-segment elevation. Motion artifacts can resemble premature ventricular contractions. Muscle noise can obscure atrial activity. The resulting signal becomes a blend of biological information and contamination that cannot be separated by simple mathematical operations.
       </p>
+
       <p className="explanation">
-        My proposed model builds upon this understanding. It uses a 
-        diffusion process, a recent innovation in generative AI, 
-        that gradually reconstructs clean signals from noisy inputs. 
-        By conditioning the diffusion model on HR, RR, and PPG data, 
-        it learns to distinguish between noise and meaningful 
-        variability. Each signal serves as a guide, helping the model 
-        preserve the subtle but diagnostic features of the ECG, such as 
-        QRS morphology and RR interval stability, that often vanish 
-        under traditional filtering.
+        Deep learning approaches offer more flexibility, but most treat the ECG as a unimodal input. They attempt to learn what “clean” ECGs should look like without access to the broader physiological context that governs cardiac function. This narrow perspective often leads models to produce overly smooth waveforms devoid of diagnostically important nuances. My research introduces a fundamentally different approach: a multimodal, physiologically grounded diffusion model for ECG denoising.
       </p>
+
       <p className="explanation">
-        The model is trained on synchronized datasets derived from the 
-        QT Database (QTDB), containing ECG recordings annotated with 
-        beat-level information. Performance is evaluated using 
-        quantitative (signal-to-noise ratio, mean squared error), 
-        physiological (heart rate variability, RR stability), 
-        and diagnostic (arrhythmia detection accuracy) metrics. 
-        Through this process, the research demonstrates how physiological 
-        context can turn AI from a statistical tool into a biologically 
-        informed system capable of clinical reliability.
+        Diffusion models work by gradually adding noise to a signal and training a neural network to reverse that process step by step. This iterative reconstruction allows for high-resolution restoration, making diffusion models effective at preserving subtle morphological features that deterministic filters wash away. But what makes this model unique is its conditioning mechanism.
+      </p>
+      <div className="diagram">
+        <img src="/diagram.png" alt="Model diagram" className="diagram-img" />
+      </div>
+
+      <h3>Multimodal Physiological Conditioning</h3>
+      <p className="explanation">
+        Instead of reconstructing the ECG in isolation, the model incorporates several synchronized physiological cues: Heart Rate (HR) — a global measure of cardiac rhythm that ensures temporal consistency across beats; RR intervals — beat-to-beat timing relationships essential for preserving heart rate variability (HRV) and arrhythmic signatures; and Photoplethysmography (PPG) — a peripheral measure of blood volume changes that reflects the mechanical consequences of electrical activity. Together, these signals provide a synchronized, biologically meaningful scaffold that guides the model toward physiologically plausible reconstructions.
+      </p>
+
+      <h3>Data Processing and Alignment</h3>
+      <p className="explanation">
+        Using the QT Database (QTDB), ECG recordings are extracted along with beat annotations. From annotated R‑peaks we compute HR and RR intervals. PPG signals are temporally aligned through interpolation and synchronization so the pipeline produces a four‑channel multimodal input (ECG, HR, RR, PPG) that the model processes jointly.
+      </p>
+
+      <h3>Evaluation Metrics</h3>
+      <p className="explanation">
+        The model’s effectiveness is evaluated across multiple layers: quantitative metrics such as signal‑to‑noise ratio (SNR) and reconstruction error; physiological metrics including HRV accuracy, RR interval stability, and PR/QT interval preservation; and diagnostic metrics that measure downstream arrhythmia classification accuracy when denoised ECGs are fed into diagnostic networks. This layered evaluation ensures the model preserves underlying cardiac physiology, not just cosmetic signal quality.
       </p>
 
       <div className="diagram">
-        <img src="/diagram.png" alt="Model diagram" className="diagram-img" />
+        
       </div>
 
       <div className="metrics">
@@ -142,7 +129,7 @@ function Research(){
         </div>
         <p className="explanation">
           SNR improved by 62% on average, while preserving 78% of physiological correlation compared to noisy input.
-          </p>
+        </p>
       </div>
     </div>
   )
@@ -153,34 +140,28 @@ function Impact(){
     <div className="impact">
       <h2>Why It Matters</h2>
       <p className="explanation">
-        Clean ECG data is more than an academic goal. It’s a clinical 
-        necessity. When machine learning models are trained on noisy 
-        signals, even minor distortions can lead to inaccurate 
-        predictions such as false arrhythmia alerts, overlooked cardiac 
-        irregularities, or misinterpreted patterns that affect 
-        patient treatment. These errors ripple outward, undermining 
-        trust in AI and compromising the promise of digital healthcare.
+        ECG denoising may sound like a narrow technical problem, but its significance ripples across the entire landscape of medical AI and digital health.
       </p>
-      <p className="explanation">
-        By integrating physiological context into the denoising process, 
-        this project aims to establish a new standard for biomedical data 
-        preprocessing. A physiologically conditioned model does more 
-        than remove noise. It restores the meaning of the signal. 
-        It enables AI systems to recognize true cardiac dynamics, 
-        helping clinicians make faster, more accurate decisions based on 
-        data that genuinely reflects the patient’s heart.
-      </p>
-      <p className="explanation">
-        Beyond cardiology, the same principles can extend to other 
-        physiological signals such as EEG or PPG, improving multimodal 
-        healthcare systems and wearable technologies. Clean data leads 
-        to clearer insights, safer diagnoses, and a deeper trust between 
-        people and the algorithms designed to help them. In short, this 
-        project matters because it aligns technological progress with 
-        human wellbeing.
 
-        Below are some examples of real-world impact from improved ECG denoising.
-      </p>
+      <h3>Improving Diagnostic Accuracy</h3>
+      <p className="explanation">When AI systems analyze ECGs, they often rely on waveforms that require precise morphology. Noise can mask disorders such as atrial fibrillation, premature ventricular contractions, or long QT syndromes. A denoising model that preserves physiological structure while removing distortion directly enhances diagnostic reliability.</p>
+
+      <h3>Enhancing AI Generalizability</h3>
+      <p className="explanation">A common challenge in medical AI is that models trained on one dataset fail miserably when applied to another. Noise patterns vary across devices, patients, and environments. Clean, physiologically consistent data reduces this variability, allowing models to generalize better across populations and hardware.</p>
+
+      <h3>Supporting Wearable Health Technologies</h3>
+      <p className="explanation">Wearables are transforming cardiac monitoring, but their data quality is often inferior to that of clinical-grade devices. A physiologically conditioned diffusion model can help bridge this gap, enabling wearables to produce clinically trustworthy signals despite imperfect sensor conditions.</p>
+
+      <h3>Strengthening Clinical Trust</h3>
+      <p className="explanation">For clinicians, trust is earned when AI systems consistently make correct predictions based on interpretable features. If denoised ECGs retain morphological authenticity, clinicians can confidently review waveforms and validate AI recommendations, fostering human–AI collaboration rather than suspicion.</p>
+
+      <h3>Extending Beyond ECGs</h3>
+      <p className="explanation">The underlying framework can be adapted to EEG, PPG, respiratory signals, and multimodal wearable data. Any field suffering from motion artifacts or sensor noise could benefit from diffusion-based, physiologically guided reconstruction.</p>
+
+      <h3>Upholding Ethical Integrity in AI Development</h3>
+      <p className="explanation">Medical AI must prioritize the safety and wellbeing of the patient. Training models on noisy, unreliable data undermines this principle. Clean, biologically grounded data elevates medical AI from mere pattern recognition to ethically sound decision support.</p>
+
+      <p className="explanation">In short, this project matters because it aims to ensure that AI models reflect reality, not interference.</p>
       <div className="cases">
         <article className="case">
           <h4>Case: Missed Arrhythmia</h4>
@@ -207,7 +188,6 @@ function GetInvolved(){
 
   function submit(e){
     e.preventDefault()
-    // Frontend-only: show thank you message
     setSent(true)
   }
 
@@ -215,30 +195,20 @@ function GetInvolved(){
     <div className="get-involved">
       <h2>Get Involved</h2>
       <p className="explanation">
-        This project is designed to grow through collaboration. 
-        Researchers, clinicians, and developers are invited to 
-        contribute ideas, code, and data to help refine the 
-        physiologically conditioned diffusion model. Whether you 
-        specialize in biomedical engineering, machine learning, 
-        or clinical cardiology, your expertise can help strengthen 
-        the foundation for cleaner, more interpretable physiological 
-        datasets.
-       </p>
-       <p className="explanation"> 
-        The project’s open-source repository includes scripts for data 
-        preprocessing, model training, and visualization. Contributors 
-        can test the model with their own datasets, explore the architecture, and 
-        propose extensions to other biosignals.
+        This project is designed to grow through collaboration. Researchers, clinicians, and developers are invited to contribute ideas, code, and data to help refine the physiologically conditioned diffusion model. Whether you specialize in biomedical engineering, machine learning, or clinical cardiology, your expertise can strengthen the foundation for cleaner, more interpretable physiological datasets.
       </p>
-      <p className="explanation">
-        Clinicians can also participate by providing feedback on 
-        denoised ECG outputs and sharing insights into real-world 
-        signal challenges. Together, we can move toward a healthcare 
-        ecosystem where AI models learn from data that truly mirrors 
-        human physiology. Clean data is not just a research goal, it’s a 
-        collective responsibility, and your collaboration can help bring 
-        that vision to life.
-      </p>
+
+      <h3>For Researchers and Engineers</h3>
+      <p className="explanation">You can contribute by testing the open-source model, analyzing outputs, proposing architectural improvements, or extending the framework to other biosignals. The repository includes preprocessing workflows, alignment scripts, and reference implementations for diffusion‑based reconstruction.</p>
+
+      <h3>For Clinicians</h3>
+      <p className="explanation">Your insight is invaluable. Reviewing denoised signals, identifying clinically significant patterns, or providing feedback on interpretability helps ensure the model remains aligned with real-world needs. If your clinical setting encounters specific noise patterns, your observations can directly shape future model refinements.</p>
+
+      <h3>For Device Developers</h3>
+      <p className="explanation">Wearable technology companies and sensor engineers can collaborate to create pipelines that integrate physiologically conditioned denoising directly into device firmware or cloud-based monitoring systems.</p>
+
+      <h3>Why You Matter</h3>
+      <p className="explanation">Clean data is not the responsibility of one researcher, it is a collective responsibility across disciplines. Your involvement helps ensure medical AI is trustworthy, interpretable, and centered around patient wellbeing. Together, we can build a future where every heartbeat is recorded faithfully and every AI-supported decision reflects real human physiology.</p>
 
       <div className="ctas">
         <a className="cta" href="mailto:bk25a@fsu.edu">Contact the Team</a>
@@ -411,7 +381,7 @@ function ModelDemo(){
   return (
     <div className="model-demo">
       <h2>Model Demo — Upload Noisy ECG (CSV)</h2>
-      <p className="explanation">Upload a CSV containing one column of ECG samples (one value per line). The demo sends the samples to the backend model and displays the denoised result.</p>
+      <p className="explanation">Upload a CSV containing one column of ECG samples (one value per line). The demo runs a local denoiser and displays the result.</p>
 
       <div className="demo-controls">
         <label className="file-input">
